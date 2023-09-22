@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' type='text/css' href='style.css'>
+    <title>Navbar</title>
+    <script src="AccessWebServer.js"></script>
+</head>
+<body>
+    <div class = "background">
+        <div class="cont">
+        
+            <!-- Temperatur -->
+            <table class = "top_data_group">
+                <tr><td><label class = "data_topic">Busbar</label></tr>
+                <tr class = "data_point">
+                    <td><label class="text", id="lbltxtTemperatur"></label></td>
+                    <td class="number"><label class="number", id="lblvalTemperatur"></label></td>
+                </tr>
+            </table>
+            
+
+            <!-- Spannung -->
+            <table class = "data_group">
+                <tr><td><label class = "data_topic">Spannung</label></td></tr>
+                <tr class = "data_point">
+                    <td><label class="text", id="lbltxtInput Voltage L1"></label></td>
+                    <td class="number"><label class="number", id="lblvalInput Voltage L1"></label></td>
+                </tr>
+                <tr class = "data_point">
+                    <td><label class="text", id="lbltxtInput Voltage L2"></label></td>
+                    <td class="number"><label class="number", id="lblvalInput Voltage L2"></label></td>
+                </tr>
+                <tr class = "data_point">
+                    <td><label class="text", id="lbltxtInput Voltage L3"></label></td>
+                    <td class="number"><label class="number", id="lblvalInput Voltage L3"></label></td>
+                </tr>
+            </table>
+            
+
+            
+
+            <!-- Batterie -->
+            <table class = "data_group">
+                <tr><td><label class = "data_topic">Batterie</label></td>
+                    <td><label class = "arrow", id = "battery_arrow"><-></label></td>
+                </tr>
+                <tr class = data_point>
+                    <td><label class="text", id="lbltxtBattery Voltage"></label></td>
+                    <td class="number"><label class="number", id="lblvalBattery Voltage"></label></td>
+                </tr>
+                <tr class = data_point>
+                    <td><label class="text", id="lbltxtBattery Current"></label></td>
+                    <td class="number"><label class="number", id="lblvalBattery Current"></label></td>
+                </tr>
+                <tr class = data_point>
+                    <td><label class="text_focus", id="lbltxtBattery Power"></label></td>
+                    <td class="number"><label class="number_focus", id="lblvalBattery Power"></label></td>
+                </tr>
+                <tr class = data_point>
+                    <td><label class="text_focus", id="lbltxtBattery SOC"></label></td>
+                    <td class="number"><label class="number_focus", id="lblvalBattery SOC"></label></td>
+                </tr>
+            </table>
+
+            <!-- Lasten -->
+            <table class = "data_group">
+                <tr><td><label class = "data_topic">Lasten</label></td></tr>
+                <tr class = data_point>
+                    <td><label class="text", id="lbltxtAC Consumption L1"></label></td>
+                    <td class="number"><label class="number", id="lblvalAC Consumption L1"></label></td>
+                </tr>
+                <tr class = data_point>
+                    <td><label class="text", id="lbltxtAC Consumption L2"></label></td>
+                    <td class="number"><label class="number", id="lblvalAC Consumption L2"></label></td>
+                </tr>
+                <tr class = data_point>
+                    <td><label class="text", id="lbltxtAC Consumption L3"></label></td>
+                    <td class="number"><label class="number", id="lblvalAC Consumption L3"></label></td>
+                </tr>
+                <tr class = data_point>
+                    <td><label class="text_focus", id="lbltxtTotal Consumption"></label></td>
+                    <td class="number"><label class="number_focus", id="lblvalTotal Consumption"></label></td>
+                </tr>
+                <tr class = data_point>
+                    <td><label class="text_focus", id="lbltxtVerbrauch heute"></label></td>
+                    <td class="number"><label class="number_focus", id="lblvalVerbrauch heute"></label></td>
+                </tr>
+            </table>
+
+
+            <!-- Solar -->
+            <table class = "bottom_data_group">
+                <tr><td><label class = "data_topic">Solar</label></td></tr>
+                <tr class = data_point>
+                    <td><label class="text_focus", id="lbltxtLeistung String 1"></label></td>
+                    <td class="number"><label class="number_focus", id="lblvalLeistung String 1"></label></td>
+                </tr>
+                <tr class = data_point>
+                    <td><label class="text", id="lbltxtLeistung String 2"></label></td>
+                    <td class="number"><label class="number", id="lblvalLeistung String 2"></label></td>
+                </tr>
+                <tr class = data_point>
+                    <td><label class="text", id="lbltxtEnergie heute"></label></td>
+                    <td class="number"><label class="number", id="lblvalEnergie heute"></label></td>
+                </tr>
+                <tr class = data_point>
+                    <td><label class="text", id="lbltxtEnergie heute 1"></label></td>
+                    <td class="number"><label class="number", id="lblvalEnergie heute 1"></label></td>
+                </tr>
+                <tr class = data_point>
+                    <td><label class="text", id="lbltxtEnergie heute 2"></label></td>
+                    <td class="number"><label class="number", id="lblvalEnergie heute 2"></label></td>
+                </tr>
+                <tr class = data_point>
+                    <td><label class="text", id="lbltxtEnergie gestern"></label></td>
+                    <td class="number"><label class="number", id="lblvalEnergie gestern"></label></td>
+                </tr>
+                <tr class = data_point>
+                    <td><label class="text", id="lbltxtEnergie gestern 1"></label></td>
+                    <td class="number"><label class="number", id="lblvalEnergie gestern 1"></label></td>
+                </tr>
+                <tr class = data_point>
+                    <td><label class="text", id="lbltxtEnergie gestern 2"></label></td>
+                    <td class="number"><label class="number", id="lblvalEnergie gestern 2"></label></td>
+                </tr>
+            </table>
+            
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
