@@ -39,17 +39,22 @@ def get_devices(conn, toke, installation_id):
 
 def get_installation_data(conn, toke, data_url_selection, installation_id, data_out, scheduler):
     # data_url_selection sollte overall stats sein, da nur so das dictionary funktioniert
+    key_names = ['total_consumption', 'grid_history_from', 'grid_history_to']
+    api_data_filter = [""]
+
     scheduler.enter(10, 1, get_installation_data, (conn, toke, data_url_selection, installation_id, data_out, scheduler))
     headers = {'Content-Type': "application/json", 'x-authorization': "Bearer " + toke}
 
     day_beginning = datetime.datetime.combine(datetime.datetime.now(), datetime.time.min)
     timestamp = int(day_beginning.timestamp())
-
+    # attributeCode[] formatting for multiple attibute?????
     conn.request("GET", f"/v2/installations/{installation_id}/{data_url_selection}start={timestamp}&interval=days", headers=headers)
     res = conn.getresponse()
-    data = res.read().decode("utf-8")
+    data = json.loads(res.read().decode("utf-8"))['records']
 
-    data_out[0] = json.loads(data)['records']['total_consumption'][0][1]
+    api_data_filter[0] = {key: data[key] for key in key_names}
+    print(api_data_filter[0]["total_consumption"])
+    data_out[0] = api_data_filter[0]
 
 
 

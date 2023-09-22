@@ -51,7 +51,7 @@ function update_html(data_struct) {
         {
             //console.log('lbl' + data[y][0]);
             try {
-                document.getElementById('lbltxt' + data[y][0]).innerHTML =  data[y][0].replace('Consumption','').replace('Battery ','').replace('Leistung ','').replace('Input Voltage ','').replace('Energie', ' ').replace('Verbrauch ', '');
+                document.getElementById('lbltxt' + data[y][0]).innerHTML =  data[y][0].replace('Consumption','').replace('Battery ','').replace('Leistung ','').replace('Input Voltage ','').replace('Energie', ' ').replace('Verbrauch ', '').replace('Netzbezug ', '');
                 document.getElementById('lblval' + data[y][0]).innerHTML =  data[y][1]["value"] + " " + data[y][1]["unit"];
             }
             catch {

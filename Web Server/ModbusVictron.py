@@ -14,6 +14,7 @@ class Device:
 
 def acquire_data(client, dev_list, data_out, api_data_in, scheduler):
     scheduler.enter(1, 1, acquire_data, (client, dev_list, data_out, api_data_in, scheduler))
+
     return_dict = {}
     divisor = 1
 
@@ -34,11 +35,12 @@ def acquire_data(client, dev_list, data_out, api_data_in, scheduler):
 
         if device.name == "VEBus":
             # Einfügen des Tagesverbrauches aus API
+            if api_data_in != [""]:
+                device.data["Verbrauch heute"] = {"value": '{:.2f}'.format(round(float(api_data_in[0]["total_consumption"][0][1]), 2)),
+                                                  "unit": "kWh"}
+                device.data["Netzbezug heute"] = {"value": '{:.2f}'.format(round(float(api_data_in[0]['grid_history_from'][0][1] -
+                                                      api_data_in[0]['grid_history_to'][0][1]), 2)), "unit": "kWh"}
 
-            try:
-                device.data["Verbrauch heute"] = {"value": round(float(api_data_in[0]), 2), "unit": "kWh"}
-            except ValueError:
-                pass
 
         if device.name == "Pylontech":
             device.data["Battery Power"] = {"value": round(float(device.data["Battery Voltage"]["value"]) * float(device.data["Battery Current"]["value"])), "unit": "W"}
@@ -56,6 +58,5 @@ def acquire_data(client, dev_list, data_out, api_data_in, scheduler):
         return_dict[device.unit_id] = temp_dict
 
     data_out[0] = json.dumps(return_dict)
-    print(api_data_in)
     api_data_in = [""]
 
