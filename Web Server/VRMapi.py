@@ -53,7 +53,7 @@ def get_installation_data(conn, toke, data_url_selection, installation_id, data_
     data = json.loads(res.read().decode("utf-8"))['records']
 
     api_data_filter[0] = {key: data[key] for key in key_names}
-    print(api_data_filter[0]["total_consumption"])
+    print(api_data_filter)
     data_out[0] = api_data_filter[0]
 
 

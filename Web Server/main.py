@@ -30,7 +30,7 @@ class MyServer(BaseHTTPRequestHandler):
 if __name__ == "__main__":
 
     # MODBUS CLIENT
-    modbus_client = ModbusVictron.ModbusClient(port=502, host="192.168.178.110", auto_close=True, debug=False)
+    modbus_client = ModbusVictron.ModbusClient(port=502, host="192.168.178.110")
 
     # in den Registernamen ist ein Divisor eingebaut (selbst ausgedacht)
     device_list = [ModbusVictron.Device(24, "Temperatursensor",
@@ -46,7 +46,10 @@ if __name__ == "__main__":
                                                        8: {"Energie gestern 2": 3713, "unit": 'kWh', "divisor": 10},
                                                        9: {"AC Consumption L1": 817, "unit": 'W', "divisor": 1},
                                                        10: {"AC Consumption L2": 818, "unit": 'W', "divisor": 1},
-                                                       11: {"AC Consumption L3": 819, "unit": 'W', "divisor": 1}}}),
+                                                       11: {"AC Consumption L3": 819, "unit": 'W', "divisor": 1},
+                                                       12: {"Input Power L1": 820, "unit": 'W', "divisor": 1},
+                                                       13: {"Input Power L2": 821, "unit": 'W', "divisor": 1},
+                                                       14: {"Input Power L3": 822, "unit": 'W', "divisor": 1}}}),
                    ModbusVictron.Device(225, "Pylontech",
                                         {"registers": {1: {"Battery Voltage": 259, "unit": 'V', "divisor": 100},
                                                        2: {"Battery Current": 261, "unit": 'A', "divisor": 10},
@@ -85,5 +88,5 @@ if __name__ == "__main__":
     #except KeyboardInterrupt:
     #    pass
 
-    webServer.server_close()
+    #webServer.server_close()
     print("Server stopped.")

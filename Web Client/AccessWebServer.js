@@ -33,6 +33,7 @@ function linear_color_blend(colors,  control, control_max, control_min) {
     let i = 0;
     let color_out = [0, 0, 0];
     let color_amount = colors.length;
+    control = Math.max(Math.min(control, control_max), control_min);
 
     let division_scaler = 10000;
     let control_normalized = (control - control_min) / (control_max - control_min) * division_scaler;
@@ -44,8 +45,9 @@ function linear_color_blend(colors,  control, control_max, control_min) {
         control_wrapped = Math.min(Math.max(control_normalized % segment_size / segment_size, 0), 1);
     }
     else {
-        control_wrapped = 1;
+        control_wrapped = +(control >= control_max);
     }
+    console.log(control_wrapped);
 
     for (i = 0; i < 3; i++) {
         color_out[i] = colors[control_segment][i] + control_wrapped * (colors[control_segment + 1][i] - colors[control_segment][i]);
@@ -80,11 +82,13 @@ function update_html(data_struct) {
 
     let soc = Math.floor(Number(data_struct[225]["Data"]["Battery SOC"]["value"]));
     let solar1 = Math.floor(Number(data_struct[100]["Data"]["Leistung String 1"]["value"]));
+    let load = Math.floor(Number(data_struct[100]["Data"]["Total Consumption"]["value"]));
     let temp = Math.floor(Number(data_struct[24]["Data"]["Temperatur"]["value"]));
 
    
     document.getElementById('lblvalLeistung String 1').style.color = linear_color_blend([[255, 255, 255], [255, 141, 41], [255, 255, 0]], solar1, 4000, 0);
-    document.getElementById('lblvalBattery SOC').style.color = linear_color_blend([[255, 0, 0],[0, 255, 0]], soc, 0, 100);
+    document.getElementById('lblvalBattery SOC').style.color = linear_color_blend([[255, 0, 0],[0, 255, 0]], soc, 100, 0);
+    document.getElementById('lblvalTotal Consumption').style.color = linear_color_blend([[255, 255, 0],[255, 255, 255],[255, 0, 0]], load, 3000, -3000);
 
     document.getElementById('lblvalTemperatur').style.color = get_temp_color(temp);
 
